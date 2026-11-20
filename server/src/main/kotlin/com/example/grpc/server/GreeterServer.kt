@@ -13,6 +13,7 @@ import io.grpc.protobuf.services.ProtoReflectionService
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlin.time.Duration.Companion.milliseconds
 
 /** Implementation of the Greeter service using grpc-kotlin coroutine stubs. */
 class GreeterService : GreeterGrpcKt.GreeterCoroutineImplBase() {
@@ -37,7 +38,7 @@ class GreeterService : GreeterGrpcKt.GreeterCoroutineImplBase() {
                 message = "Greeting $i of $count for ${request.name}"
                 timestampMillis = System.currentTimeMillis()
             })
-            delay(500) // simulate work so the streaming is visible in the UI
+            delay(500.milliseconds) // simulate work so the streaming is visible in the UI
         }
     }
 }
